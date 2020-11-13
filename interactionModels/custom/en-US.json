@@ -1,0 +1,450 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "my tarot card",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "CaptureCardIntent",
+          "slots": [
+            {
+              "name": "card",
+              "type": "tarotCards"
+            }
+          ],
+          "samples": [
+            "my card is {card}",
+            "I picked {card}",
+            "{card}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Two of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Two of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Two of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Two of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Three of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Three of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Three Of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Three of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "The World"
+              }
+            },
+            {
+              "name": {
+                "value": "The Wheel of Fortune"
+              }
+            },
+            {
+              "name": {
+                "value": "The Tower"
+              }
+            },
+            {
+              "name": {
+                "value": "The Sun"
+              }
+            },
+            {
+              "name": {
+                "value": "The Star"
+              }
+            },
+            {
+              "name": {
+                "value": "The Moon"
+              }
+            },
+            {
+              "name": {
+                "value": "The Magician"
+              }
+            },
+            {
+              "name": {
+                "value": "The Lovers"
+              }
+            },
+            {
+              "name": {
+                "value": "The High Priestess"
+              }
+            },
+            {
+              "name": {
+                "value": "The Hierophant"
+              }
+            },
+            {
+              "name": {
+                "value": "The Hermit"
+              }
+            },
+            {
+              "name": {
+                "value": "The Hanged Man"
+              }
+            },
+            {
+              "name": {
+                "value": "The Fool"
+              }
+            },
+            {
+              "name": {
+                "value": "The Empress"
+              }
+            },
+            {
+              "name": {
+                "value": "The Emperor"
+              }
+            },
+            {
+              "name": {
+                "value": "The Devil"
+              }
+            },
+            {
+              "name": {
+                "value": "The Chariot"
+              }
+            },
+            {
+              "name": {
+                "value": "Ten of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Ten of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Ten of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Ten of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Temperance"
+              }
+            },
+            {
+              "name": {
+                "value": "Strength"
+              }
+            },
+            {
+              "name": {
+                "value": "Six of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Six of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Six of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Six of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Seven of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Seven of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Seven of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Seven of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Queen of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Queen of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Queen of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Queen of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Page of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Page of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Page of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Page of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Nine of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Nine of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Nine of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Nine of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Knight of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Knight of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Knight of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Knight of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "King of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "King of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "King of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "King of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Justice"
+              }
+            },
+            {
+              "name": {
+                "value": "Judgment"
+              }
+            },
+            {
+              "name": {
+                "value": "Four of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Four of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Four of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Four of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Five of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Five of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Five of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Five of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Eight of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Eight of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Eight of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Eight of Cups"
+              }
+            },
+            {
+              "name": {
+                "value": "Death"
+              }
+            },
+            {
+              "name": {
+                "value": "Ace of Wands"
+              }
+            },
+            {
+              "name": {
+                "value": "Ace of Swords"
+              }
+            },
+            {
+              "name": {
+                "value": "Ace of Pentacles"
+              }
+            },
+            {
+              "name": {
+                "value": "Ace of Cups"
+              }
+            }
+          ],
+          "name": "tarotCards"
+        }
+      ]
+    }
+  },
+  "version": "2"
+}
