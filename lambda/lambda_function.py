@@ -22,18 +22,21 @@ class LaunchRequestHandler(AbstractRequestHandler):
     """Handler for Skill Launch."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
+
         return ask_utils.is_request_type("LaunchRequest")(handler_input)
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        speak_output = "Hello! This Tarot. What's your first card?"
+        speak_output = "Hello! This is Tarot. We will do a six card reading. What's your first card?"
         reprompt_text = "What's the name of your card? One is The Fool"
+
         return (
             handler_input.response_builder
                 .speak(speak_output)
                 .ask(speak_output)
                 .response
         )
+
 
 
 class CaptureTarotIntentHandler(AbstractRequestHandler):
@@ -43,8 +46,13 @@ class CaptureTarotIntentHandler(AbstractRequestHandler):
    
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
+        session_attr = handler_input.attributes_manager.session_attributes
         slots = handler_input.request_envelope.request.intent.slots
         card = slots["card"].value
+        if "count" in session_attr:
+            session_attr["count"] += 1
+        else:
+            session_attr["count"] = 0
         cardDic = {"the fool":"I sense inexperience.  Perhaps the subject represents a dreamer, someone who may be impulsive and careless.",
             "the magician":"There is harmonious interaction between idea and feeling, desire and emotion.  The subject has organizational skills and creative talents, and the potential to create.",
             "the high priestess":"Here we have spiritual enlightenment and inner illumination.  There may be hidden influences at work.",
@@ -68,73 +76,81 @@ class CaptureTarotIntentHandler(AbstractRequestHandler):
             "judgment":"I see a life well lived, and work well done.  There is an awakening, along with accountability.",
             "the world":"I see fulfillment, gain, or achievement of something worked for or deserved.  Completion, reward, and success are near.",
             "ace of wands":"I see the beginning of a journey, an adventure, or an escapade.",
-            "two of wands":"The answer lies with a new idea or an opportunity.",
-            "three of wands":"Realization of hope, established strength, wealth and power.  There may be a partnership involved.",
-            "four of wands":"Hard work, persistence, peace, prosperity, and harmony.",
-            "five of wands":"Uh oh.  There is violent strife and competition.  You may be facing obstacles or limitations that will hold back progress.",
-            "six of wands":"There is good news.  Advancement in work, and your friends may be helpful.",
-            "seven of wands":"I sense tiredness and a lack of motivation for key projects.",
-            "eight of wands":"There is a renewed fire and spirit.  There is movement in the air, but it may be too fast.",
-            "nine of wands":"I sense exhaustion.  There will be a pause in your struggle.  There will be eventual victory, but a steady force must be applied.",
-            "ten of wands":"There is a force and energy being applied, but power is unwisely used.  You are taking on too much.",
+            "2 of wands":"The answer lies with a new idea or an opportunity.",
+            "3 of wands":"Realization of hope, established strength, wealth and power.  There may be a partnership involved.",
+            "4 of wands":"Hard work, persistence, peace, prosperity, and harmony.",
+            "5 of wands":"Uh oh.  There is violent strife and competition.  You may be facing obstacles or limitations that will hold back progress.",
+            "6 of wands":"There is good news.  Advancement in work, and your friends may be helpful.",
+            "7 of wands":"I sense tiredness and a lack of motivation for key projects.",
+            "8 of wands":"There is a renewed fire and spirit.  There is movement in the air, but it may be too fast.",
+            "9 of wands":"I sense exhaustion.  There will be a pause in your struggle.  There will be eventual victory, but a steady force must be applied.",
+            "10 of wands":"There is a force and energy being applied, but power is unwisely used.  You are taking on too much.",
             "page of wands":"I sense passion around a creative idea, but it needs some refinement.",
             "knight of wands":"I sense impulsiveness, and perhaps a change of residence, emigration, or a quick departure.",
             "queen of wands":"I sense upcoming success in your endeavors, and loyalty, generosity and kindness.",
             "king of wands":"I sense honesty, friendliness, and passion.  A leader in a position of authority, who is happy when facing challenges.",
-            "ace of cups":"I sense relationships unfolding, desire for companionship",
-            "two of cups":"I see partnerships and the development of a bond",
-            "three of cups":"There may be a celebration of something special coming soon.",
-            "four of cups":"I sense indifference.  The subject is slightly disengaged from the activity.",
-            "five of cups":"Be prepared to be upset or disappointed with the situation.",
-            "six of cups":"Be careful not to take a trip down memory lane.  I sense regret.",
-            "seven of cups":"There are so many decisions to make!",
-            "eight of cups":"Be prepared for separation, heartbreak, and lost hope.",
-            "nine of cups":"I sense a meaningful relationship or engagement.  There are happy times ahead.",
-            "ten of cups":"There are strong bonds, a strong family connection, and emotional contentment.",
+            "ace of cups":"I sense relationships unfolding, desire for companionship.",
+            "2 of cups":"I see partnerships and the development of a bond.",
+            "3 of cups":"There may be a celebration of something special coming soon.",
+            "4 of cups":"I sense indifference.  The subject is slightly disengaged from the activity.",
+            "5 of cups":"Be prepared to be upset or disappointed with the situation.",
+            "6 of cups":"Be careful not to take a trip down memory lane.  I sense regret.",
+            "7 of cups":"There are so many decisions to make!",
+            "8 of cups":"Be prepared for separation, heartbreak, and lost hope.",
+            "9 of cups":"I sense a meaningful relationship or engagement.  There are happy times ahead.",
+            "10 of cups":"There are strong bonds, a strong family connection, and emotional contentment.",
             "page of cups":"I sense inconsistencies.  There seems to be a swing between being studious and giving into daydreaming.",
             "knight of cups":"You may receive a message, a proposition, or an invitation.",
             "queen of cups":"I sense honesty, devotion, and loyalty.  There may be success and happiness in the future.",
             "king of cups":"The subject may not be as in touch with their emotions as you might think.",
             "ace of swords":"There are challenges ahead, as you may be faced with a change in belief.",
-            "two of swords":"You may be avoiding conflict that needs to be faced or talked about.",
-            "three of swords":"I sense a betrayal or loss.  There may be disappointment, separation, or quarreling.",
-            "four of swords":"This is a time for contemplation and recuperation.",
-            "five of swords":"I sense failure, defeat, cruelty and cowardliness.",
-            "six of swords":"There may be a calm moment in an otherwise difficult situation.",
-            "seven of swords":"Be alert.  There is the potential for deception or dishonesty.",
-            "eight of swords":"I sense that the subject is being driven by fear, and there may be betrayal.",
-            "nine of swords":"There may be suffering, loss, doubt.  A fresh mental perspective may be needed.",
-            "ten of swords":"Your plans or projects will be ruined.  Tears will fall.  There will be a biter and difficult ending.",
+            "2 of swords":"You may be avoiding conflict that needs to be faced or talked about.",
+            "3 of swords":"I sense a betrayal or loss.  There may be disappointment, separation, or quarreling.",
+            "4 of swords":"This is a time for contemplation and recuperation.",
+            "5 of swords":"I sense failure, defeat, cruelty and cowardliness.",
+            "6 of swords":"There may be a calm moment in an otherwise difficult situation.",
+            "7 of swords":"Be alert.  There is the potential for deception or dishonesty.",
+            "8 of swords":"I sense that the subject is being driven by fear, and there may be betrayal.",
+            "9 of swords":"There may be suffering, loss, doubt.  A fresh mental perspective may be needed.",
+            "10 of swords":"Your plans or projects will be ruined.  Tears will fall.  There will be a bitter and difficult ending.",
             "page of swords":"Be wary of childish behavior.",
             "knight of swords":"There is misfortune in the air.",
             "queen of swords":"A guarded but intelligent woman may be involved.",
             "king of swords":"I sense power, strength, and authority.  There may be wise counsel given.",
             "ace of pentacles":"I sense the beginning of wealth and material gain.",
-            "two of pentacles":"I sense a feeling of lightheartedness.  There is harmony in the midst of change.",
-            "three of pentacles":"Be prepared to celebrate success or material gain.",
-            "four of pentacles":"There may be gifts, material gain, or success.  Avoid risk or challenge.",
-            "five of pentacles":"I sense financial and security issues that will cause concern. Perhaps the subject involves someone who will be facing unemployment or loneliness.",
-            "six of pentacles":"The subject may involve the receipt of a gift, bonus, or loan.  There may be some positive feelings about people and the future.",
-            "seven of pentacles":"I sense someone who may be feeling insecure on some level.  They may need to make a decision about their future.",
-            "eight of pentacles":"I sense someone who is learning a trade or profession, and employment or a commission is in their future.",
-            "nine of pentacles":"I sense someone who will reap the rewards of hard work and commitment.  This is a time for them to feel proud.",
-            "ten of pentacles":"I sense strong bonds and a solid foundation.  Someone who seem to have a happy, fulfilled, and secure lifestyle.",
+            "2 of pentacles":"I sense a feeling of lightheartedness.  There is harmony in the midst of change.",
+            "3 of pentacles":"Be prepared to celebrate success or material gain.",
+            "4 of pentacles":"There may be gifts, material gain, or success.  Avoid risk or challenge.",
+            "5 of pentacles":"I sense financial and security issues that will cause concern. Perhaps the subject involves someone who will be facing unemployment or loneliness.",
+            "6 of pentacles":"The subject may involve the receipt of a gift, bonus, or loan.  There may be some positive feelings about people and the future.",
+            "7 of pentacles":"I sense someone who may be feeling insecure on some level.  They may need to make a decision about their future.",
+            "8 of pentacles":"I sense someone who is learning a trade or profession, and employment or a commission is in their future.",
+            "9 of pentacles":"I sense someone who will reap the rewards of hard work and commitment.  This is a time for them to feel proud.",
+            "10 of pentacles":"I sense strong bonds and a solid foundation.  Someone who seem to have a happy, fulfilled, and secure lifestyle.",
             "page of pentacles":"I sense a person who is searching for help on a project, but also has a lot to learn.",
             "knight of pentacles":"I sense a person who is responsible, and is a creature of habit that enjoys routine.",
             "queen of pentacles":"I sense a person who is self-sufficient and has achieved a lot.  They have earned the trust of those around them.",
             "king of pentacles":"I sense a person who does not like to take risks.  They are trustworthy, kind, and reliable.  They have a steady temperament."
+           
         }
-        
         res = "None"
         if card in cardDic:
             res = cardDic[card]
+        if session_attr["count"] == 5:
+            res = cardDic[card]
+            speak_output = '{res} To start a new tarot reading, pick another card!'.format(res=res)
+            session_attr["count"] = -1
+        else:
+            res = cardDic[card]
+            speak_output = '{res} Pick another card!'.format(res=res)
+            
         #attributes_manager = handler_input.attributes_manager
         #card_attributes = {
         #    "card": card,
         #}
         #attributes_manager.persistent_attributes = card_attributes
         #attributes_manager.save_persistent_attributes()
-        speak_output = '{res}'.format(res=res)
+        
 
         return (
             handler_input.response_builder
