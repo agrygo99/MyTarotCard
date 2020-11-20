@@ -5,22 +5,22 @@ Alexa Skill to read tarot cards
 Go to Alexa Developer Console:
 https://developer.amazon.com/alexa/console/ask
 
-If you don't have an account, create one. 
-Click on create a skill.
-Name it "my tarot card"
-Select Python at the bottom of the page.
-On the top right, select "import skill"
-Copy and paste this link into the import skill box
-https://github.com/agrygo99/MyTarotCard
-This will take awhile.... be patient please.
-Click on "invocation name"
-Make sure it says "my tarot card"
-Click "save model" 
-Click "build model"
-Click on the "test" heading
-Click "Development"
-Type or say "my tarot card" to launch the skill
-Type in a tarot card. Ex
+1.) If you don't have an account, create one. 
+2.) Click on create a skill.
+3.) Name it "my tarot card"
+4.) Select Python at the bottom of the page.
+5.) On the top right, select "import skill"
+6.) Copy and paste this link into the import skill box
+7.) https://github.com/agrygo99/MyTarotCard
+8.) This will take awhile.... be patient please.
+9.) Click on "invocation name"
+10.) Make sure it says "my tarot card" 
+11.) Click "save model" 
+12.) Click "build model" 
+13.) Click on the "test" heading 
+14.) Click "Development"
+15.) Type or say "my tarot card" to launch the skill
+16.) Type in a tarot card. Ex
 the fool
 justice
 death
