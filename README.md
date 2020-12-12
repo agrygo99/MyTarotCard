@@ -28,7 +28,8 @@ the star
 the magician
 the moon
 
-To add this Alexa Skill to your device follow the steps on this link.
+(Optional)
+To add this Alexa Skill to your device follow the steps on this link. Search "my tarot card" in the app and you should find it.
 https://www.theverge.com/2019/11/19/20972973/amazon-echo-alexa-how-to-add-skills-smart-home-games-sounds
 
 You should get a different message if you try to say one more card.
